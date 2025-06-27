@@ -1,12 +1,11 @@
 pipeline {
     agent any
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/your-username/your-python-repo.git'
-            }
-        }
+   stage('Checkout') {
+    steps {
+        git 'https://github.com/SAHIDH03/Jenkins.git'
+    }
+}
 
         stage('Install Dependencies') {
             steps {
