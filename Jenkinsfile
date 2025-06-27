@@ -3,7 +3,7 @@ pipeline {
 
    stage('Checkout') {
     steps {
-        git 'https://github.com/SAHIDH03/Jenkins.git'
+        git 'https://github.com/SAHIDH03/Jenkinsfile.git'
     }
 }
 
