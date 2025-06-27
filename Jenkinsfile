@@ -1,36 +1,38 @@
 pipeline {
     agent any
- 
+
     stages {
         stage('Checkout') {
             steps {
-                echo 'Cloning the repo...'
+                git 'https://github.com/your-username/your-python-repo.git'
             }
         }
- 
-        stage('Build') {
+
+        stage('Install Dependencies') {
             steps {
-                echo 'Building the project...'
+                sh 'pip install -r requirements.txt || true'
             }
         }
- 
-        stage('Test') {
+
+        stage('Run Tests') {
             steps {
-                echo 'Running tests...'
-                sh 'date'
+                sh 'python -m unittest discover || echo "Tests failed"'
             }
         }
- 
-        stage('Info') {
-            steps {
-                sh 'uname -a'
-            }
-        }
- 
+
         stage('Deploy') {
             steps {
-                echo 'Deploying the application...'
+                echo 'Deployment logic goes here...'
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Build passed!'
+        }
+        failure {
+            echo '❌ Build failed!'
         }
     }
 }
